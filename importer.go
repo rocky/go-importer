@@ -54,8 +54,7 @@ import (
 
 	"code.google.com/p/go.tools/astutil"
 	"code.google.com/p/go.tools/go/exact"
-	"code.google.com/p/go.tools/go/gcimporter"
-	"code.google.com/p/go.tools/go/types"
+	"github.com/rocky/go-types"
 )
 
 // An Importer's exported methods are not thread-safe.
@@ -123,9 +122,11 @@ func New(config *Config) *Importer {
 
 	// Save the caller's effective Import funcion.
 	importfn := config.TypeChecker.Import
+	/***** rocky
 	if importfn == nil {
 		importfn = gcimporter.Import
 	}
+    ****/
 
 	imp := &Importer{
 		Fset:     token.NewFileSet(),
