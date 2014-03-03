@@ -54,6 +54,7 @@ import (
 
 	"code.google.com/p/go.tools/astutil"
 	"code.google.com/p/go.tools/go/exact"
+	"github.com/rocky/go-gcimporter"
 	"github.com/rocky/go-types"
 )
 
@@ -122,11 +123,9 @@ func New(config *Config) *Importer {
 
 	// Save the caller's effective Import funcion.
 	importfn := config.TypeChecker.Import
-	/***** rocky
 	if importfn == nil {
 		importfn = gcimporter.Import
 	}
-    ****/
 
 	imp := &Importer{
 		Fset:     token.NewFileSet(),
